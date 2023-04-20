@@ -13,9 +13,11 @@ const PORT = process.env.PORT || 3001;
 
 const sess = {
   secret: "shh don't tell",
-  cookie: {},
+  cookie: {
+    maxAge: 60 * 60 * 1000,
+  },
   resave: false,
-  saveUnintialized: true,
+  saveUninitialized: true,
   store: new SequelizeStore({
     db: sequelize,
   }),
@@ -29,7 +31,7 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
-app.use(express.urlencoded({ entended: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
