@@ -12,12 +12,23 @@ Post.init(
       autoIncrement: true,
     },
     title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    body: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    splashImage: {
-      type: DataTypes.STRING,
-      allowNull: true,
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
     },
   },
   {
