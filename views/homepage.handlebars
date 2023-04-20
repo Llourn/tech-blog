@@ -3,3 +3,12 @@
   neque consequatur. Id, dicta quidem! Voluptatum, recusandae commodi? Error
   laudantium consequatur debitis. Iste odit cupiditate accusamus, necessitatibus
   dolorem nobis? Repellendus.</p>
+
+{{#each posts as |post|}}
+  <section>
+    <img style='width: 300px' src='{{post.image}}' />
+    <h3><a href='/posts/{{post.id}}'>{{post.title}}</a></h3>
+    <p>Posted: {{post.createdAt}}</p>
+    <p>Author: <a href='/profile/{{post.user.id}}'>{{post.user.name}}</a></p>
+  </section>
+{{/each}}
