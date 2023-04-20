@@ -23,6 +23,7 @@ router.get('/', async (req, res) => {
       .json({ message: 'There was a problem retrieving posts.', error: err });
   }
 });
+
 // Render blog post
 router.get('/posts/:id', async (req, res) => {
   try {
@@ -31,12 +32,10 @@ router.get('/posts/:id', async (req, res) => {
     });
 
     if (!postData) {
-      res
-        .status(400)
-        .json({
-          message: 'Unable to find a post with that id.',
-          data: postData,
-        });
+      res.status(400).json({
+        message: 'Unable to find a post with that id.',
+        data: postData,
+      });
       return;
     }
 
@@ -52,6 +51,11 @@ router.get('/posts/:id', async (req, res) => {
       error: err,
     });
   }
+});
+
+// New Post
+router.get('/new-post', async (req, res) => {
+  res.render('newPost');
 });
 
 // Render login/signup page
