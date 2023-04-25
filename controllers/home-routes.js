@@ -39,7 +39,7 @@ router.get('/posts/:id', async (req, res) => {
       return;
     }
 
-    const post = postData.get({ plan: true });
+    const post = postData.get({ plain: true });
     res.render('post', { post });
   } catch (err) {
     console.error({
