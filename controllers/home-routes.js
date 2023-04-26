@@ -59,6 +59,16 @@ router.get('/new-post', async (req, res) => {
 });
 
 // Render login/signup page
+router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  console.log('kldjfhskljfhjdkslhfl');
+  if (req.session.logged_in) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('login');
+});
 
 // Render User Profile
 
