@@ -3,4 +3,6 @@
   <p>welcome user {{user_id}}</p>
 {{/if}}
 
-{{#each posts as |post|}}{{/each}}
+{{#each posts as |post|}}
+{{>post_preview}}
+{{/each}}

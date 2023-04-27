@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Post, User } = require('../models');
-const { withAuth } = require('../utils/helpers');
+const { with_auth } = require('../utils/helpers');
 
 // Render home page
 router.get('/', async (req, res) => {
@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     }
 
     const posts = postData.map((post) => post.get({ plain: true }));
-    console.log(posts);
+
     res.render('homepage', { posts, logged_in: req.session.logged_in });
   } catch (err) {
     console.error({ message: 'GET /', error: err });
@@ -71,9 +71,9 @@ router.get('/login', (req, res) => {
 });
 
 // Render User dashboard
-router.get('/dashboard', withAuth, (req, res) => {
+router.get('/dashboard', with_auth, async (req, res) => {
   try {
-    const postData = Post.findAll({
+    const postData = await Post.findAll({
       where: {
         user_id: req.session.user_id,
       },
