@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Post, User } = require('../models');
+const { withAuth } = require('../utils/helpers');
 
 // Render home page
 router.get('/', async (req, res) => {
@@ -15,7 +16,7 @@ router.get('/', async (req, res) => {
 
     const posts = postData.map((post) => post.get({ plain: true }));
     console.log(posts);
-    res.render('homepage', { posts, loggedIn: req.session.loggedIn });
+    res.render('homepage', { posts, logged_in: req.session.logged_in });
   } catch (err) {
     console.error({ message: 'GET /', error: err });
     res
@@ -40,7 +41,7 @@ router.get('/posts/:id', async (req, res) => {
     }
 
     const post = postData.get({ plain: true });
-    res.render('post', { post, loggedIn: req.session.loggedIn });
+    res.render('post', { post, logged_in: req.session.logged_in });
   } catch (err) {
     console.error({
       message: 'There was a problem retrieving the post.',
@@ -55,13 +56,13 @@ router.get('/posts/:id', async (req, res) => {
 
 // New Post
 router.get('/new-post', async (req, res) => {
-  res.render('newPost');
+  res.render('new_post');
 });
 
 // Render login/signup page
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
-  if (req.session.loggedIn) {
+  if (req.session.logged_in) {
     res.redirect('/');
     return;
   }
@@ -69,6 +70,28 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-// Render User Profile
+// Render User dashboard
+router.get('/dashboard', withAuth, (req, res) => {
+  try {
+    const postData = Post.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
+    });
+
+    const posts = postData.map((post) => post.get({ plain: true }));
+
+    res.render('dashboard', {
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+      posts: posts,
+    });
+  } catch (err) {
+    console.error({
+      message: "There was a problem getting user's posts.",
+      error: err,
+    });
+  }
+});
 
 module.exports = router;
