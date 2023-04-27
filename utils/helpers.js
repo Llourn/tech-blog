@@ -1,5 +1,9 @@
 module.exports = {
-  placeholder: () => {
-    console.log('this is just a placeholder.');
+  withAuth: (req, res, next) => {
+    if (!req.session.loggedIn) {
+      res.redirect('/login');
+    } else {
+      next();
+    }
   },
 };
