@@ -11,7 +11,7 @@ module.exports = {
     return date.toLocaleDateString();
   },
   truncate_txt: (text) => {
-    const target = text.length < 100 ? text.length : 100;
+    const target = text.length < 50 ? text.length : 100;
     return text.slice(0, target) + '...';
   },
 };

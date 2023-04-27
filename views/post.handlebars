@@ -1,7 +1,14 @@
 <h1>
   {{post.title}}
 </h1>
-<img style='width: 100%' src='{{post.image}}' />
+{{#if post.image}}
+  <img style='width: 100%' src='{{post.image}}' />
+{{else}}
+  <img
+    style='width: 100%'
+    src='https://images.unsplash.com/photo-1627398242454-45a1465c2479?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80'
+  />
+{{/if}}
 <p>Author: {{post.user.name}}</p>
-<p>Posted: {{post.created_at}}</p>
+<p>Posted: {{format_date post.created_at}}</p>
 <pre style='width: 100%; white-space:break-spaces;'>{{post.body}}</pre>

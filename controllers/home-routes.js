@@ -56,7 +56,7 @@ router.get('/posts/:id', async (req, res) => {
 
 // New Post
 router.get('/new-post', async (req, res) => {
-  res.render('new_post');
+  res.render('new_post', { logged_in: req.session.logged_in });
 });
 
 // Render login/signup page

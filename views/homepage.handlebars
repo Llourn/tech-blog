@@ -6,9 +6,11 @@
 
 {{#each posts as |post|}}
   <section>
-    <img style='width: 300px' src='{{post.image}}' />
+    {{#if post.image}}
+      <img style='width: 300px' src='{{post.image}}' />
+    {{/if}}
     <h3><a href='/posts/{{post.id}}'>{{post.title}}</a></h3>
-    <p>Posted: {{post.created_at}}</p>
-    <p>Author: <a href='/profile/{{post.user.id}}'>{{post.user.name}}</a></p>
+    <p>Posted: {{format_date post.created_at}}</p>
+    <p>Author: {{post.user.name}}</p>
   </section>
 {{/each}}
