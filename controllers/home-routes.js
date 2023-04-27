@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 
     const posts = postData.map((post) => post.get({ plain: true }));
     console.log(posts);
-    res.render('homepage', { posts });
+    res.render('homepage', { posts, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.error({ message: 'GET /', error: err });
     res
@@ -40,7 +40,7 @@ router.get('/posts/:id', async (req, res) => {
     }
 
     const post = postData.get({ plain: true });
-    res.render('post', { post });
+    res.render('post', { post, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.error({
       message: 'There was a problem retrieving the post.',
@@ -61,8 +61,7 @@ router.get('/new-post', async (req, res) => {
 // Render login/signup page
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
-  console.log('kldjfhskljfhjdkslhfl');
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     res.redirect('/');
     return;
   }
