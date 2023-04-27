@@ -1,6 +1,10 @@
 <h1>
   {{post.title}}
 </h1>
+{{#if is_author}}
+  <button data-post-id='{{post.id}}' id='post-update'>Update Post</button>
+  <button data-post-id='{{post.id}}' id='post-delete'>Delete Post</button>
+{{/if}}
 {{#if post.image}}
   <img style='width: 100%' src='{{post.image}}' />
 {{else}}
@@ -12,3 +16,6 @@
 <p>Author: {{post.user.name}}</p>
 <p>Posted: {{format_date post.created_at}}</p>
 <pre style='width: 100%; white-space:break-spaces;'>{{post.body}}</pre>
+{{#if is_author}}
+  <script src='/js/action-post.js'></script>
+{{/if}}

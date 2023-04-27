@@ -1,0 +1,26 @@
+<form>
+  <label for='post-title'>Title:</label>
+  <input
+    type='text'
+    id='post-title'
+    name='post-title'
+    value='{{post.title}}'
+  /><br /><br />
+  <label for='post-image'>Image Link:</label>
+  <input
+    type='text'
+    id='post-image'
+    name='post-image'
+    value='{{post.image}}'
+  /><br /><br />
+  <label for='post-body'>Write your post here:</label>
+  <textarea
+    name='post-body'
+    id='post-body'
+    cols='30'
+    rows='10'
+  >{{post.body}}</textarea>
+  <button id='submit-post' data-post-id='{{post.id}}'>Submit</button>
+</form>
+
+<script src='/js/update-post.js'></script>

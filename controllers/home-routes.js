@@ -41,7 +41,12 @@ router.get('/posts/:id', async (req, res) => {
     }
 
     const post = postData.get({ plain: true });
-    res.render('post', { post, logged_in: req.session.logged_in });
+    console.log('user id', req.session.user_id);
+    res.render('post', {
+      post,
+      logged_in: req.session.logged_in,
+      is_author: post.user_id === req.session.user_id,
+    });
   } catch (err) {
     console.error({
       message: 'There was a problem retrieving the post.',
@@ -91,6 +96,22 @@ router.get('/dashboard', with_auth, async (req, res) => {
       message: "There was a problem getting user's posts.",
       error: err,
     });
+  }
+});
+
+router.get('/update-post/:id', async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id);
+    const post = postData.get({ plain: true });
+    res.render('update_post', { post, logged_in: req.session.logged_in });
+  } catch (err) {
+    console.error({
+      message: 'There was an error getting the post.',
+      error: err,
+    });
+    res
+      .status(500)
+      .json({ message: 'There was an error getting the post.', error: err });
   }
 });
 
