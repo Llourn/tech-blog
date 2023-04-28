@@ -1,8 +1,13 @@
-<h2>This is the dashboard</h2>
-{{#if logged_in}}
-  <p>welcome user {{user_id}}</p>
-{{/if}}
-
-{{#each posts as |post|}}
-{{>post_preview}}
-{{/each}}
+<section>
+  <h1>Dashboard</h1>
+  {{#if posts}}
+  {{#each posts as |post|}}
+  {{>post_preview}}
+  {{/each}}
+  {{else}}
+  <p>There are no posts to view. Create a new post to see it in your dashboard.</p>
+  {{/if}}
+  <div class="form-group buttons">
+    <button onClick="location.replace('/new-post')">New Post</button>
+  </div>
+</section>
