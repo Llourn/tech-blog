@@ -7,6 +7,7 @@ router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
       include: [{ model: User }],
+      order: [['created_at', 'DESC']],
     });
 
     if (!postData) {
@@ -85,6 +86,7 @@ router.get('/dashboard', with_auth, async (req, res) => {
       where: {
         user_id: req.session.user_id,
       },
+      order: [['created_at', 'DESC']],
     });
 
     const posts = postData.map((post) => post.get({ plain: true }));
