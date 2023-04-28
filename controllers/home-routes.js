@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User } = require('../models');
+const { Post, User, Comment } = require('../models');
 const { with_auth } = require('../utils/helpers');
 
 // Render home page
@@ -29,7 +29,10 @@ router.get('/', async (req, res) => {
 router.get('/posts/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
-      include: [{ model: User }],
+      include: [
+        { model: User },
+        { model: Comment, include: [{ model: User }] },
+      ],
     });
 
     if (!postData) {
@@ -41,7 +44,7 @@ router.get('/posts/:id', async (req, res) => {
     }
 
     const post = postData.get({ plain: true });
-    console.log('user id', req.session.user_id);
+    console.log('❌', post);
     res.render('post', {
       post,
       logged_in: req.session.logged_in,

@@ -16,6 +16,21 @@
 <p>Author: {{post.user.name}}</p>
 <p>Posted: {{format_date post.created_at}}</p>
 <pre style='width: 100%; white-space:break-spaces;'>{{post.body}}</pre>
+{{#each post.comments as |comment|}}
+{{>comment_card}}
+{{/each}}
+{{#if logged_in}}
+<section>
+  <form>
+    <label for="comment">Comment:</label>
+    <textarea name="comment" id="comment-box" cols="30" rows="10"></textarea>
+    <button id="post-comment" data-post-id="{{post.id}}" >Submit</button>
+  </form>
+</section>
+<script src='/js/comment.js'></script>
+{{else}}
+<p>Log in to leave a comment.</p>
+{{/if}}
 {{#if is_author}}
   <script src='/js/action-post.js'></script>
 {{/if}}

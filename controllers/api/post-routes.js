@@ -24,8 +24,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Get post by id
-
 // Update post by id
 router.put('/:id', async (req, res) => {
   try {
