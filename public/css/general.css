@@ -61,3 +61,7 @@ a:hover {
   color: var(--accent-color-light);
   text-decoration: underline;
 }
+
+hr {
+  border: 1px solid var(--primary-color);
+}

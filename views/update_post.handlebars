@@ -1,26 +1,40 @@
-<form>
-  <label for='post-title'>Title:</label>
-  <input
-    type='text'
-    id='post-title'
-    name='post-title'
-    value='{{post.title}}'
-  /><br /><br />
-  <label for='post-image'>Image Link:</label>
-  <input
-    type='text'
-    id='post-image'
-    name='post-image'
-    value='{{post.image}}'
-  /><br /><br />
-  <label for='post-body'>Write your post here:</label>
-  <textarea
-    name='post-body'
-    id='post-body'
-    cols='30'
-    rows='10'
-  >{{post.body}}</textarea>
-  <button id='submit-post' data-post-id='{{post.id}}'>Submit</button>
-</form>
+<section>
+  <h1>Update Post</h1>
+  <form>
+    <div class='form-group align-left'>
+      <label for='post-title'>Title:</label>
+      <input
+        type='text'
+        id='post-title'
+        name='post-title'
+        value='{{post.title}}'
+      />
+    </div>
 
-<script src='/js/update-post.js'></script>
+    <div class='form-group align-left'>
+      <label for='post-image'>Image Link:</label>
+      <input
+        type='text'
+        id='post-image'
+        name='post-image'
+        value='{{post.image}}'
+      />
+    </div>
+
+    <div class='form-group text-area'>
+      <label for='post-body'>Write your post here:</label>
+      <textarea
+        name='post-body'
+        id='post-body'
+        cols='30'
+        rows='10'
+      >{{post.body}}</textarea>
+    </div>
+
+    <div class='form-group buttons'>
+      <button id='submit-post' data-post-id='{{post.id}}'>Submit</button>
+    </div>
+  </form>
+
+  <script src='/js/update-post.js'></script>
+</section>

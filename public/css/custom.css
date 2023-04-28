@@ -1,6 +1,5 @@
 .container {
   max-width: 50rem;
-  /* padding-inline: 1rem; */
   margin: auto;
 }
 
@@ -47,6 +46,10 @@ header .container {
   gap: 0.5rem;
 }
 
+.form-group.align-left {
+  justify-content: start;
+}
+
 .form-group.buttons {
   justify-content: end;
 }
@@ -54,6 +57,15 @@ header .container {
 .form-group.buttons > button {
   justify-content: end;
   margin-right: 0;
+}
+
+.form-group.text-area {
+  display: block;
+}
+
+.form-group textarea {
+  width: 100%;
+  height: 6rem;
 }
 
 .card section {
@@ -91,6 +103,7 @@ a.post-preview:hover {
 .post {
   padding-top: 0.87rem;
   background-color: white;
+  padding-bottom: 1rem;
 }
 
 .post > * {
@@ -100,6 +113,27 @@ a.post-preview:hover {
 .post img {
   padding-inline: 0;
 }
+
+.post pre {
+  white-space: break-spaces;
+}
+
 .post h1 {
   margin-top: 0;
+}
+
+.post-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.comment {
+  border-radius: 1rem;
+  background-color: var(--primary-color);
+  padding-block: 1rem;
+  margin-inline: 1rem;
+  margin-bottom: 1rem;
+  color: white;
 }

@@ -16,18 +16,26 @@
     src='https://images.unsplash.com/photo-1627398242454-45a1465c2479?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80'
   />
 {{/if}}
-<p>Author: {{post.user.name}}</p>
-<p>Posted: {{format_date post.created_at}}</p>
-<pre style='width: 100%; white-space:break-spaces;'>{{post.body}}</pre>
+<div class="post-info">
+  <p>Author: {{post.user.name}}</p>
+  <p>Posted: {{format_date post.created_at}}</p>
+</div>
+<pre>{{post.body}}</pre>
+<hr/>
+<h3>Comments:</h3>
 {{#each post.comments as |comment|}}
 {{>comment_card}}
 {{/each}}
 {{#if logged_in}}
 <section>
   <form>
+    <div class="form-group text-area">
     <label for="comment">Comment:</label>
     <textarea name="comment" id="comment-box" cols="30" rows="10"></textarea>
+    </div>
+    <div class="form-group buttons">
     <button id="post-comment" data-post-id="{{post.id}}" >Submit</button>
+    </div>
   </form>
 </section>
 <script src='/js/comment.js'></script>
