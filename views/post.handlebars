@@ -1,9 +1,12 @@
+<section class="post">
 <h1>
   {{post.title}}
 </h1>
 {{#if is_author}}
+<div class="form-group buttons">
   <button data-post-id='{{post.id}}' id='post-update'>Update Post</button>
   <button data-post-id='{{post.id}}' id='post-delete'>Delete Post</button>
+</div>
 {{/if}}
 {{#if post.image}}
   <img style='width: 100%' src='{{post.image}}' />
@@ -34,3 +37,4 @@
 {{#if is_author}}
   <script src='/js/action-post.js'></script>
 {{/if}}
+</section>

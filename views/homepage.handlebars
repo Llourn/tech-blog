@@ -1,16 +1,16 @@
-<h2>This is the homepage.</h2>
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nulla
-  neque consequatur. Id, dicta quidem! Voluptatum, recusandae commodi? Error
-  laudantium consequatur debitis. Iste odit cupiditate accusamus, necessitatibus
-  dolorem nobis? Repellendus.</p>
+<h1>Welcome to Tech Blog!</h1>
 
 {{#each posts as |post|}}
-  <section>
-    {{#if post.image}}
-      <img style='width: 300px' src='{{post.image}}' />
-    {{/if}}
-    <h3><a href='/posts/{{post.id}}'>{{post.title}}</a></h3>
-    <p>Posted: {{format_date post.created_at}}</p>
-    <p>Author: {{post.user.name}}</p>
-  </section>
+  <a class='post-preview card' href='/posts/{{post.id}}'>
+    <section>
+      {{#if post.image}}
+        <img src='{{post.image}}' />
+      {{/if}}
+      <h3>{{post.title}}</h3>
+      <dev class='post-preview-info'>
+        <p>Author: {{post.user.name}}</p>
+        <p>Posted: {{format_date post.created_at}}</p>
+      </dev>
+    </section>
+  </a>
 {{/each}}

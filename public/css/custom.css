@@ -1,0 +1,105 @@
+.container {
+  max-width: 50rem;
+  /* padding-inline: 1rem; */
+  margin: auto;
+}
+
+header {
+  height: 3rem;
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+header a:hover {
+  color: white;
+}
+
+nav > a {
+  color: white;
+  text-decoration: none;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  line-height: 1.1;
+}
+
+.form-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.form {
+  max-width: 20rem;
+  margin-block: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-group.buttons {
+  justify-content: end;
+}
+
+.form-group.buttons > button {
+  justify-content: end;
+  margin-right: 0;
+}
+
+.card section {
+  border: 1px solid var(--primary-color);
+  background-color: white;
+  margin-bottom: 2rem;
+}
+
+a.post-preview {
+  color: unset;
+}
+
+a.post-preview:hover {
+  text-decoration: none;
+}
+
+.post-preview img {
+  width: 100%;
+  height: 17rem;
+  object-fit: cover;
+}
+
+.post-preview h3 {
+  margin-inline: 1rem;
+}
+
+.post-preview-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-inline: 1rem;
+}
+
+.post {
+  padding-top: 0.87rem;
+  background-color: white;
+}
+
+.post > * {
+  padding-inline: 1rem;
+}
+
+.post img {
+  padding-inline: 0;
+}
+.post h1 {
+  margin-top: 0;
+}

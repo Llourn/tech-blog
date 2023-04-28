@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap');
+
+:root {
+  --primary-color: #0077b6;
+  --accent-color: #b63e00;
+  --accent-color-light: #f65200;
+  --white: whitesmoke;
+  --black: #36454f;
+}
+
+html {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: var(--black);
+  background-color: var(--white);
+  outline-color: #0077b6;
+}
+
+pre {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+button {
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border-radius: 3rem;
+  border: 1px solid var(--black);
+  background-color: var(--black);
+  color: white;
+  cursor: pointer;
+  outline-offset: 0.2rem;
+  transition: transform 125ms ease-in;
+  margin: 0.5rem;
+}
+
+button:hover,
+button:focus-visible {
+  background-color: var(--primary-color);
+  transform: scale(1.04);
+}
+
+label {
+  text-transform: uppercase;
+}
+
+input[type='text'],
+input[type='password'] {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.2rem;
+  border: 1px solid var(--black);
+  line-height: 1.5;
+}
+
+a {
+  color: unset;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+a:hover {
+  color: var(--accent-color-light);
+  text-decoration: underline;
+}
